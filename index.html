@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hardsoftty Corporation</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #020402;
+      color: white;
+      overflow: hidden;
+      height: 100vh;
+      position: relative;
+    }
+
+    .background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at top left, rgba(0, 255, 128, 0.18), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(0, 180, 90, 0.18), transparent 35%),
+        #020402;
+      z-index: -2;
+    }
+
+    .grid {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: -1;
+      animation: moveGrid 10s linear infinite;
+    }
+
+    @keyframes moveGrid {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(40px);
+      }
+    }
+
+    .container {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 900px;
+      padding: 60px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      text-align: center;
+      box-shadow: 0 0 40px rgba(0, 255, 128, 0.18);
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #00ff88, #00cc66);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #8effc3;
+      margin-bottom: 35px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .description {
+      max-width: 650px;
+      margin: 0 auto 40px;
+      font-size: 1.1rem;
+      color: #d7ffe9;
+      line-height: 1.8;
+    }
+
+    .loader {
+      width: 280px;
+      height: 10px;
+      margin: 0 auto 25px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .loader::before {
+      content: "";
+      position: absolute;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(90deg, #00ff88, #00cc66);
+      border-radius: 999px;
+      animation: loading 2s infinite ease-in-out;
+    }
+
+    @keyframes loading {
+      0% {
+        left: -40%;
+      }
+      100% {
+        left: 100%;
+      }
+    }
+
+    .status {
+      color: #78ffb3;
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .contact-box {
+      margin-top: 35px;
+      padding: 20px;
+      border-radius: 18px;
+      background: rgba(0, 255, 128, 0.06);
+      border: 1px solid rgba(0, 255, 128, 0.15);
+    }
+
+    .contact-title {
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #78ffb3;
+      margin-bottom: 10px;
+    }
+
+    .contact-email {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    .contact-email:hover {
+      color: #00ff88;
+      text-shadow: 0 0 12px rgba(0,255,136,0.5);
+    }
+
+    .footer {
+      margin-top: 50px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .particles span {
+      position: absolute;
+      display: block;
+      width: 4px;
+      height: 4px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 50%;
+      animation: particle 10s linear infinite;
+    }
+
+    @keyframes particle {
+      0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        padding: 40px 25px;
+      }
+
+      .logo {
+        font-size: 2.4rem;
+      }
+
+      .title {
+        font-size: 2rem;
+      }
+
+      .description {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background"></div>
+  <div class="grid"></div>
+
+  <div class="particles" id="particles"></div>
+
+  <div class="container">
+    <div class="card">
+      <div class="logo">Hardsoftty</div>
+      <div class="subtitle">Corporation</div>
+
+      <h1 class="title">Estamos Construindo o Futuro</h1>
+
+      <p class="description">
+        A Hardsoftty Corporation está em desenvolvimento.
+        Em breve lançaremos soluções inovadoras em tecnologia,
+        software, automação e inteligência digital.
+      </p>
+
+      <div class="loader"></div>
+
+      <div class="status">
+        Projeto em Construção • Coming Soon
+      </div>
+
+      <div class="contact-box">
+        <p class="contact-title">Contato</p>
+        <a href="mailto:hardsoftty@gmail.com" class="contact-email">
+          hardsoftty@gmail.com
+        </a>
+      </div>
+
+      <div class="footer">
+        © 2026 Hardsoftty Corporation — Todos os direitos reservados.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const particles = document.getElementById('particles');
+
+    for (let i = 0; i < 45; i++) {
+      const span = document.createElement('span');
+
+      span.style.left = Math.random() * 100 + 'vw';
+      span.style.animationDuration = (5 + Math.random() * 10) + 's';
+      span.style.animationDelay = Math.random() * 5 + 's';
+      span.style.opacity = Math.random();
+
+      particles.appendChild(span);
+    }
+  </script>
+
+</body>
+</html>
